@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style='text-align:center'>
+        <h1>Verificar Aprovação</h1>
+        <label for="Idd">Idade:</label>
+        <br>
+        <input type="number" id="idd">
+        <br>
+        <button onclick="idade()">Verificar Idade</button>
+        <h1 id="btCalcular"></h1>
+    </div>
+
+
+    <script>
+        function idade() {
+            //Obtém a idade
+            const idd = parseFloat(document.getElementById('idd').value);
+
+            if (idd < 18) {
+                document.getElementById('btCalcular').innerText = 'Menor de idade!';
+            } else if (idd > 18 && idd < 60) {
+                document.getElementById('btCalcular').innerText = 'Maior de idade!';
+            } else if (idd > 18 && idd > 60) {
+                document.getElementById('btCalcular').innerText = 'Idoso!';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
