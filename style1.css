@@ -1,0 +1,71 @@
+html {
+    background-image: url('https://lp.startse.com.br/wp-content/uploads/2018/06/img-background-a-nova-economia.jpg');
+    
+    
+}
+
+body {
+    background-image: url('https://lp.startse.com.br/wp-content/uploads/2018/06/img-background-a-nova-economia.jpg');
+    background-size: 0;
+    
+
+}
+
+.container {
+    position: relative;
+    margin: 10rem auto;
+    height: 30rem;
+    max-width: 30rem;
+    background-color: #0d6ebe;
+    border-radius: 2rem;
+    padding: 1%;
+    display: grid;
+    box-shadow: 0px 0px 10px 8px #9394ace1;
+
+}
+
+h1 {
+    align-self: center;
+    position: relative;
+    font: italic 3rem bold;
+    padding: 1%;
+}
+
+.msg-ap {
+    width: auto;
+    position: fixed;
+    display: none;
+    margin: 10% 20% 0 20%;
+}
+
+.msg-ex {
+    width: auto;
+    position: fixed;
+    display: none;
+    margin: 10% 20% 0 20%;
+}
+
+.msg-rp {
+    width: auto;
+    position: fixed;
+    display: none;
+    margin: 10% 20% 0 20%;
+}
+
+.msg-err {
+    color: aliceblue;
+    width: auto;
+    position: fixed;
+    display: none;
+    margin: 10% 20% 0 20%;
+    background-color: rgba(0, 0, 0, 0.7);
+
+}
+
+#title {
+    margin-left: 10%;
+}
+
+#btn {
+    color: black;
+}

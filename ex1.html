@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Verificar Aprovação</title>
+        <link rel="stylesheet" type="text/css" href="./style1.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div class="msg-ap" id="msg-ap">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Parabéns!</h4>
+                <p>Muito Bem, voçê foi <strong>APROVADO</strong> na undidade curricular de "Teste de Software" e estamos
+                    muito orgulhosos por essa conquista :)</p>
+                <hr>
+                <p class="mb-0">Se voçê não acredita, consulte a professora Elisangela Citru...</p>
+
+            </div>
+            <button onclick="atualizarPagina()" class="btn btn-outline-secondary">Recarregar</button>
+        </div>
+        <div class="msg-rp" id="msg-rp">
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">AH NÃO ! :(</h4>
+                <p>Infelizmente, voçê foi <strong>REPROVADO</strong> na undidade curricular de "Teste de Software" e estamos
+                    muito orgulhosos por essa conquista :)</p>
+                <hr>
+                <p class="mb-0">Se voçê não acredita, consulte a professora Elisangela Citru...</p>
+
+            </div>
+            <button onclick="atualizarPagina()" class="btn btn-outline-secondary">Recarregar</button>
+        </div>
+        <div class="msg-ex" id="msg-ex">
+            <div class="alert alert-warning" role="alert">
+                <h4 class="alert-heading">ATENÇÃO !!</h4>
+                <p>Prepare-se, voçê tera que fazer o <strong>EXAME</strong> na undidade curricular de "Teste de Software" e
+                    estamos muito orgulhosos por essa conquista :)</p>
+                <hr>
+                <p class="mb-0">Se voçê não acredita, consulte a professora Elisangela Citru...</p>
+
+            </div>
+            <button onclick="atualizarPagina()" class="btn btn-outline-secondary">Recarregar</button>
+        </div>
+        <div class="msg-err" id="msg-err">
+            <div class="alert" role="alert">
+                <h4 class="alert-heading">ERROOO :/ !!</h4>
+                <p><strong>OHH NÃO ! </strong>Voçê tera recarregar a página novamente pois os campos foram preenchidos com
+                    dados <strong>INCORRETOS</strong> </p>
+                <p> Ignorando os avisos !&#128548;</p>
+                <hr>
+                <button onclick="atualizarPagina()" id="btn" class="btn btn-outline-secondary">Recarregar</button>
+            </div>
+        </div>
+        <div class="container" id="formulario">
+            <h1 id="title" class="title">Minha Média</h1>
+            <label for="validationServer01">Nota 1</label>
+            <input type="number" id="nota1" class="form-control" min="0" max="10" required>
+
+            <br>
+            <label for="validationServer01">Nota 2</label>
+            <input type="number" id="nota2" class="form-control" min="0" max="10" required>
+            <br>
+            <button onclick="verificarAprovacao()" class="btn btn-outline-secondary">Verificar</button>
+
+        </div>
+        <script>
+            function atualizarPagina() {
+                location.reload();
+            }
+            function verificarAprovacao() {
+                const nota1 = document.getElementById("nota1").value;
+                const nota2 = document.getElementById("nota2").value;
+
+                if (isNotaValida(nota1) && isNotaValida(nota2)) {
+                    // As notas são válidas, faça o que quiser aqui
+                    const media = (parseFloat(nota1) + parseFloat(nota2)) / 2;
+                    if (media >= 6) {
+                        document.getElementById('formulario').style.visibility = 'hidden';
+                        document.getElementById('msg-ap').style.display = 'inline';
+                    } else if (media < 6 && media >= 3) {
+                        document.getElementById('formulario').style.visibility = 'hidden';
+                        document.getElementById('msg-ex').style.display = 'inline';
+                    } else {
+                        document.getElementById('formulario').style.visibility = 'hidden';
+                        document.getElementById('msg-rp').style.display = 'inline';
+                    }
+                } else {
+                    document.getElementById('formulario').style.visibility = 'hidden';
+                    document.getElementById('msg-err').style.display = 'inline';
+                }
+            }
+
+            function isNotaValida(nota) {
+                const parsedNota = parseInt(nota);
+                return !isNaN(parsedNota) && Number.isInteger(parsedNota) && parsedNota >= 0 && parsedNota <= 10;
+            }
+
+            // Adicionar eventos de escuta para validação das notas enquanto o usuário digita
+            document.getElementById("nota1").addEventListener("input", function () {
+                const nota1 = document.getElementById("nota1").value;
+                if (!isNotaValida(nota1)) {
+                    alert("Nota inválida! Insira um número entre 0 e 10.");
+
+
+                }
+
+            });
+
+            document.getElementById("nota2").addEventListener("input", function () {
+                const nota2 = document.getElementById("nota2").value;
+                if (!isNotaValida(nota2)) {
+                    alert("Nota inválida! Insira um número entre 0 e 10.");
+
+                }
+            });
+        </script>
+    </body>
+
+</html>
