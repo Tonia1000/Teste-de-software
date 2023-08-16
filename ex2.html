@@ -31,12 +31,14 @@
             //Obtém a idade
             const idd = parseFloat(document.getElementById('idd').value);
 
-            if (idd < 18) {
+            if (idd < 18 && idd > 0) {
                 document.getElementById('btCalcular').innerText = 'Menor de idade!';
             } else if (idd > 18 && idd < 60) {
                 document.getElementById('btCalcular').innerText = 'Maior de idade!';
             } else if (idd > 18 && idd >= 60) {
                 document.getElementById('btCalcular').innerText = 'Idoso!';
+            } else {
+                document.getElementById('btCalcular').innerText = 'Idade Invalida!';
             }
         }
     </script>
